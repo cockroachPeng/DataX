@@ -19,7 +19,7 @@
         <fileSet>
             <directory>target/</directory>
             <includes>
-                <include>sqlserverwriter-0.0.1-SNAPSHOT.jar</include>
+                <include>sqlserverwriter-0.0.1.jar</include>
             </includes>
             <outputDirectory>plugin/writer/sqlserverwriter</outputDirectory>
         </fileSet>

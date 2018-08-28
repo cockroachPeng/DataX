@@ -1,0 +1,86 @@
+{
+	"core": {
+        "dataXServer": {
+            "address": "http://localhost/",
+            "timeout": 10000
+        },
+        "transport": {
+            "channel": {
+                "class": "com.alibaba.datax.core.transport.channel.memory.MemoryChannel",
+                "speed": {
+                    "byte": 2097152,
+                    "record": 10000
+                },
+                "capacity": 32
+            },
+            "exchanger": {
+                "class": "com.alibaba.datax.core.plugin.BufferedRecordExchanger",
+                "bufferSize": 32
+            }
+        },
+        "container": {
+            "job": {
+                "reportInterval": 1000
+            },
+            "taskGroup": {
+                "channel": 3
+            }
+        },
+        "statistics": {
+            "collector": {
+                "plugin": {
+                    "taskClass": "com.alibaba.datax.core.statistics.plugin.task.StdoutPluginCollector",
+                    "maxDirtyNumber": 1000
+                }
+            }
+        }
+    },
+    "job": {
+        "content": [
+            {
+                "reader": {
+                    "name": "mysqlreader",
+                    "parameter": {
+                        "column": [],
+                        "connection": [
+                            {
+                                "jdbcUrl": ["jdbc:mysql://192.168.199.30:3306/amg_brand_0?autoReconnect=true&useSSL=false"],
+                                "table": ["amg_brand_buff_cat_0"]
+                            }
+                        ],
+                        "password": "nxxyr5Z76WrBuFj8",
+                        "username": "amugua"
+                    }
+                },
+                "writer": {
+                    "name": "mysqlwriter",
+                    "parameter": {
+                        "column": [],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:mysql://192.168.199.30:3306/amg_goods_0?autoReconnect=true&useSSL=false",
+                                "table": ["amg_goods_sku_0"]
+                            }
+                        ],
+                        "username": "amugua",
+                        "password": "nxxyr5Z76WrBuFj8",
+                        "preSql": [],
+                        "session": [],
+                        "writeMode": "replace",
+                        "needDynamicTable": "true",
+						"dynamicTable": "amg_goods_buff_cat",
+                        "dynamicJdbcUrls": ["jdbc:mysql://192.168.199.30:3306/amg_goods_0?autoReconnect=true&useSSL=false","jdbc:mysql://192.168.199.30:3306/amg_goods_1?autoReconnect=true&useSSL=false","jdbc:mysql://192.168.199.30:3306/amg_goods_2?autoReconnect=true&useSSL=false","jdbc:mysql://192.168.199.30:3306/amg_goods_3?autoReconnect=true&useSSL=false","jdbc:mysql://112.17.84.119:23306/amg_goods_4?autoReconnect=true&useSSL=false","jdbc:mysql://112.17.84.119:23306/amg_goods_5?autoReconnect=true&useSSL=false","jdbc:mysql://112.17.84.119:23306/amg_goods_6?autoReconnect=true&useSSL=false","jdbc:mysql://112.17.84.119:23306/amg_goods_7?autoReconnect=true&useSSL=false"],
+                        "dynamicTableCalIndex": "2",
+                        "dynamicDbCalIndex": "2",
+                        "dynamicTableCalIndex1": "0",
+                        "dynamicTableCount1": "128"                    }
+                }
+            }
+        ],
+        "setting": {
+            "speed": {
+                "channel": "8"
+            }
+        }
+    }
+}

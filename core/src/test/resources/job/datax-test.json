@@ -1,0 +1,81 @@
+{
+	"core": {
+        "dataXServer": {
+            "address": "http://localhost/",
+            "timeout": 10000
+        },
+        "transport": {
+            "channel": {
+                "class": "com.alibaba.datax.core.transport.channel.memory.MemoryChannel",
+                "speed": {
+                    "byte": 1048576,
+                    "record": 10000
+                },
+                "capacity": 32
+            },
+            "exchanger": {
+                "class": "com.alibaba.datax.core.plugin.BufferedRecordExchanger",
+                "bufferSize": 32
+            }
+        },
+        "container": {
+            "job": {
+                "reportInterval": 1000
+            },
+            "taskGroup": {
+                "channel": 3
+            }
+        },
+        "statistics": {
+            "collector": {
+                "plugin": {
+                    "taskClass": "com.alibaba.datax.core.statistics.plugin.task.StdoutPluginCollector",
+                    "maxDirtyNumber": 1000
+                }
+            }
+        }
+    },
+    "job": {
+        "content": [
+            {
+                "reader": {
+                    "name": "mysqlreader",
+                    "parameter": {
+                        "column": ["apply_id","brand_id","order_id","unique_id","trade_amt","channel_code","channel_desc","channel_pay_id","return_code","gmt_create","org_apply_id","fee_rate","channel_fee_rate"],
+                        "connection": [
+                            {
+                                "jdbcUrl": ["jdbc:mysql://192.168.199.30:3306/amg_pgw_0?autoReconnect=true&useSSL=false"],
+                                "table": ["amg_pgw_apply_detail_6"]
+                            }
+                        ],
+                        "password": "mugua2014",
+                        "username": "root",
+                        "where": "gmt_create >= '2017-04-01 00:00:00' and gmt_create < '2017-08-08 00:00:00'"
+                    }
+                },
+                "writer": {
+                    "name": "mysqlwriter",
+                    "parameter": {
+                        "column": ["trade_id","brand_id","order_id","pay_id","trade_amt","channel","channel_desc","channel_trade_id","trade_result","gmt_trade","org_trade_id","charge_rate","channel_charge_rate"],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:mysql://192.168.199.30:3306/amg_settlement_1?autoReconnect=true&useSSL=false",
+                                "table": ["amg_settlement_bill_10"]
+                            }
+                        ],
+                        "password": "nxxyr5Z76WrBuFj8",
+                        "preSql": [],
+                        "session": [],
+                        "username": "amugua",
+                        "writeMode": "insert"
+                    }
+                }
+            }
+        ],
+        "setting": {
+            "speed": {
+                "channel": "2"
+            }
+        }
+    }
+}

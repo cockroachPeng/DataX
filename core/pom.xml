@@ -4,15 +4,16 @@
     <parent>
         <groupId>com.alibaba.datax</groupId>
         <artifactId>datax-all</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>0.0.1</version>
     </parent>
+    <version>0.0.2</version>
 
     <artifactId>datax-core</artifactId>
     <name>datax-core</name>
     <packaging>jar</packaging>
 
     <dependencies>
-        <dependency>
+        <!-- <dependency>
             <groupId>com.alibaba.datax</groupId>
             <artifactId>datax-common</artifactId>
             <version>${datax-project-version}</version>
@@ -22,7 +23,17 @@
                     <groupId>org.slf4j</groupId>
                 </exclusion>
             </exclusions>
-        </dependency>
+        </dependency> -->
+        <dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba.datax</groupId>
+			<artifactId>plugin-rdbms-util</artifactId>
+			<version>${datax-project-version}</version>
+		</dependency>
         <dependency>
             <groupId>commons-configuration</groupId>
             <artifactId>commons-configuration</artifactId>
@@ -90,7 +101,6 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.3.2</version>
         </dependency>
     </dependencies>
 

@@ -108,6 +108,7 @@ def getOptionParser():
     parser.add_option_group(devEnvOptionGroup)
     return parser
 
+# 这是一个模板
 def generateJobConfigTemplate(reader, writer):
     readerRef = "Please refer to the %s document:\n     https://github.com/alibaba/DataX/blob/master/%s/doc/%s.md \n" % (reader,reader,reader)
     writerRef = "Please refer to the %s document:\n     https://github.com/alibaba/DataX/blob/master/%s/doc/%s.md \n " % (writer,writer,writer)
@@ -205,19 +206,19 @@ Copyright (C) 2010-2015, Alibaba Group. All Rights Reserved.
 ''' % DATAX_VERSION
     sys.stdout.flush()
 
-
+# 入口函数
 if __name__ == "__main__":
-    printCopyright()
+    printCopyright()    # 打印版权信息
     parser = getOptionParser()
     options, args = parser.parse_args(sys.argv[1:])
     if options.reader is not None and options.writer is not None:
-        generateJobConfigTemplate(options.reader,options.writer)
+        generateJobConfigTemplate(options.reader,options.writer)    # 根据reader和writer打印模板信息
         sys.exit(RET_STATE['OK'])
     if len(args) != 1:
         parser.print_help()
         sys.exit(RET_STATE['FAIL'])
 
-    startCommand = buildStartCommand(options, args)
+    startCommand = buildStartCommand(options, args) # 开始执行数据同步
     # print startCommand
 
     child_process = subprocess.Popen(startCommand, shell=True)

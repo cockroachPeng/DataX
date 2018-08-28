@@ -4,8 +4,9 @@
 	<parent>
 		<groupId>com.alibaba.datax</groupId>
 		<artifactId>datax-all</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.0.1</version>
 	</parent>
+    <version>0.0.2</version>
 	<artifactId>plugin-rdbms-util</artifactId>
 	<name>plugin-rdbms-util</name>
 	<packaging>jar</packaging>
@@ -46,6 +47,7 @@
             <artifactId>druid</artifactId>
             <version>1.0.13</version>
         </dependency>
+        
         <dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>

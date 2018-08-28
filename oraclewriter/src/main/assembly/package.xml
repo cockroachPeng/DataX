@@ -19,7 +19,7 @@
 		<fileSet>
 			<directory>target/</directory>
 			<includes>
-				<include>oraclewriter-0.0.1-SNAPSHOT.jar</include>
+				<include>oraclewriter-0.0.1.jar</include>
 			</includes>
 			<outputDirectory>plugin/writer/oraclewriter</outputDirectory>
 		</fileSet>

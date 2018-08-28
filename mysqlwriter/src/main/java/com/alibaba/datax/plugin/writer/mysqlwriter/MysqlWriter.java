@@ -1,5 +1,8 @@
 package com.alibaba.datax.plugin.writer.mysqlwriter;
 
+import com.alibaba.datax.common.element.Column;
+import com.alibaba.datax.common.element.Record;
+import com.alibaba.datax.common.element.Column.Type;
 import com.alibaba.datax.common.plugin.RecordReceiver;
 import com.alibaba.datax.common.spi.Writer;
 import com.alibaba.datax.common.util.Configuration;
@@ -7,7 +10,12 @@ import com.alibaba.datax.plugin.rdbms.util.DataBaseType;
 import com.alibaba.datax.plugin.rdbms.writer.CommonRdbmsWriter;
 import com.alibaba.datax.plugin.rdbms.writer.Key;
 
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+
+import org.apache.commons.lang3.StringUtils;
 
 
 //TODO writeProxy
@@ -65,7 +73,7 @@ public class MysqlWriter extends Writer {
         public void init() {
             this.writerSliceConfig = super.getPluginJobConf();
             this.commonRdbmsWriterTask = new CommonRdbmsWriter.Task(DATABASE_TYPE);
-            this.commonRdbmsWriterTask.init(this.writerSliceConfig);
+            this.commonRdbmsWriterTask.init(this.writerSliceConfig); // TODO：在此处计算所以有的分表规则
         }
 
         @Override

@@ -1,0 +1,91 @@
+{
+	"core": {
+        "dataXServer": {
+            "address": "http://localhost/",
+            "timeout": 10000
+        },
+        "transport": {
+            "channel": {
+                "class": "com.alibaba.datax.core.transport.channel.memory.MemoryChannel",
+                "speed": {
+                    "byte": 1048576,
+                    "record": 10000
+                },
+                "capacity": 32
+            },
+            "exchanger": {
+                "class": "com.alibaba.datax.core.plugin.BufferedRecordExchanger",
+                "bufferSize": 32
+            }
+        },
+        "container": {
+            "job": {
+                "reportInterval": 1000
+            },
+            "taskGroup": {
+                "channel": 3
+            }
+        },
+        "statistics": {
+            "collector": {
+                "plugin": {
+                    "taskClass": "com.alibaba.datax.core.statistics.plugin.task.StdoutPluginCollector",
+                    "maxDirtyNumber": 1000
+                }
+            }
+        }
+    },
+    "job": {
+        "content": [
+            {
+                "reader": {
+                    "name": "mysqlreader",
+                    "parameter": {
+                        "column": ["apply_id","brand_id","unique_id","biz_type","trade_amt","channel_code","channel_desc","notify_method","notify_config","result_receive_add","channel_pay_id","request_detail","return_code","return_detail","status","next_notify_time","gmt_biz","gmt_pmt","gmt_create","last_modify_time","notified_times","org_apply_id","pay_method","ext_info","next_notify_biz_time","notified_biz_times","notify_biz_config","fee_rate","channel_fee_rate","route"],
+                        "connection": [
+                            {
+                                "jdbcUrl": ["jdbc:mysql://127.0.0.1:3306/test?autoReconnect=true&useSSL=false"],
+                                "table": ["amg_pgw_apply_detail"]
+                            }
+                        ],
+                        "password": "123456",
+                        "username": "root"
+                    }
+                },
+                "writer": {
+                    "name": "mysqlwriter",
+                    "parameter": {
+                        "column": ["apply_id","brand_id","unique_id","biz_type","trade_amt","channel_code","channel_desc","notify_method","notify_config","result_receive_add","channel_pay_id","request_detail","return_code","return_detail","status","next_notify_time","gmt_biz","gmt_pmt","gmt_create","last_modify_time","notified_times","org_apply_id","pay_method","ext_info","next_notify_biz_time","notified_biz_times","notify_biz_config","fee_rate","channel_fee_rate","route"],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:mysql://127.0.0.1:3306/test?autoReconnect=true&useSSL=false",
+                                "table": ["amg_pgw_apply_detail"]
+                            }
+                        ],
+                        "password": "123456",
+                        "preSql": [],
+                        "session": [],
+                        "username": "root",
+                        "writeMode": "insert",
+                        "needDynamicTable": "true",
+                        "dynamicJdbcUrls": [
+                        	"jdbc:mysql://127.0.0.1:3306/test?autoReconnect=true&useSSL=false"
+                        ],
+                        "dynamicTableCalIndex": "1",
+                        "dynamicDbCalIndex": "1",
+                        
+                        "dynamicTableCalIndex1": "1",
+                        "dynamicTableCalIndex2": "1",
+                        "dynamicTableCount1": "30",
+                        "dynamicTableCount2": "3"
+                    }
+                }
+            }
+        ],
+        "setting": {
+            "speed": {
+                "channel": "4"
+            }
+        }
+    }
+}

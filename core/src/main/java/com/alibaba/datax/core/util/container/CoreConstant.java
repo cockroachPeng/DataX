@@ -66,12 +66,30 @@ public class CoreConstant {
 	public static final String DATAX_CORE_STATISTICS_COLLECTOR_PLUGIN_MAXDIRTYNUM = "core.statistics.collector.plugin.maxDirtyNumber";
 
 	public static final String DATAX_JOB_CONTENT_READER_NAME = "job.content[0].reader.name";
-
+	
 	public static final String DATAX_JOB_CONTENT_READER_PARAMETER = "job.content[0].reader.parameter";
+	
+	public static final String DATAX_JOB_CONTENT_READER_USERNAME = "job.content[0].reader.parameter.username";
+	
+	public static final String DATAX_JOB_CONTENT_READER_PASSWORD = "job.content[0].reader.parameter.password";
+	
+	public static final String DATAX_JOB_CONTENT_READER_WHERE = "job.content[0].reader.parameter.where";
+	
+	public static final String DATAX_JOB_CONTENT_READER_JDBCURL = "job.content[0].reader.parameter.connection[0].jdbcUrl[0]";
+	
+	public static final String DATAX_JOB_CONTENT_READER_TABLE = "job.content[0].reader.parameter.connection[0].table[0]";
 
 	public static final String DATAX_JOB_CONTENT_WRITER_NAME = "job.content[0].writer.name";
 
 	public static final String DATAX_JOB_CONTENT_WRITER_PARAMETER = "job.content[0].writer.parameter";
+	
+	public static final String DATAX_JOB_CONTENT_WRITER_USERNAME = "job.content[0].writer.parameter.username";
+	
+	public static final String DATAX_JOB_CONTENT_WRITER_PASSWORD = "job.content[0].writer.parameter.password";
+	
+	public static final String DATAX_JOB_CONTENT_WRITER_JDBCURL = "job.content[0].writer.parameter.connection[0].jdbcUrl";
+	
+	public static final String DATAX_JOB_CONTENT_WRITER_TABLE = "job.content[0].writer.parameter.connection[0].table[0]";
 
 	public static final String DATAX_JOB_JOBINFO = "job.jobInfo";
 

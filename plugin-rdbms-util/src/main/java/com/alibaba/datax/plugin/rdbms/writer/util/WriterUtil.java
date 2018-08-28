@@ -116,7 +116,7 @@ public final class WriterUtil {
 			throw DataXException.asDataXException(DBUtilErrorCode.ILLEGAL_VALUE,
 				String.format("您所配置的 writeMode:%s 错误. 因为DataX 目前仅支持replace 或 insert 方式. 请检查您的配置并作出修改.", writeMode));
 		}
-
+		
 		String writeDataSqlTemplate = new StringBuilder().append(writeMode)
 				.append(" INTO %s (").append(StringUtils.join(columnHolders, ","))
 				.append(") VALUES(").append(StringUtils.join(valueHolders, ","))
